@@ -10,15 +10,31 @@
     <packaging>jar</packaging>
 
     <build>
-        <finalName>application</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.2</version>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
+                    <finalName>application</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
                     <outputDirectory>${pom.basedir}/container/docker</outputDirectory>
+                    <archive>
+                        <manifest>
+                            <mainClass>edu.alevel.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -6,7 +6,6 @@ services:
     build:
       context: ./docker
       dockerfile: mongo_server
-    hostname: localhost
     ports:
       - "27017:27017"
   application:

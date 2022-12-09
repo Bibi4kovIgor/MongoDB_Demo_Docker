@@ -5,6 +5,7 @@ import edu.alevel.mongodb.MongoProductRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,7 +18,9 @@ public class Main {
         MongoProductRepository<Product> mongoProductRepository =
                 new MongoProductRepository<>(Product.class);
 
-        mongoProductRepository.clearAllData();
+        if (Objects.nonNull(mongoProductRepository.getAllData())) {
+            mongoProductRepository.clearAllData();
+        }
         mongoProductRepository.addMultipleData(mockedData);
         System.out.println(mongoProductRepository.getDataByParameter("Cheese"));
         System.out.println(mongoProductRepository.getAllData());
