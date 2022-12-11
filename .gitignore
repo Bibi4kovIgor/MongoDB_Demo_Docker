@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### additional sources ###
+container/mongo-volume/*
+container/mongo-volume/journal/*
+
 ### IntelliJ IDEA ###
 .idea/
 .idea/workspace.xml
