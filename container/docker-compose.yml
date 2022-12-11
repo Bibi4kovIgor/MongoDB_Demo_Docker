@@ -6,6 +6,9 @@ services:
     build:
       context: ./docker
       dockerfile: mongo_server
+    volumes:
+#      - ./mongo-volume:/data/db
+      - mongodata:/data/db
     ports:
       - "27017:27017"
   application:
@@ -19,3 +22,6 @@ services:
 networks:
   internal:
     driver: bridge
+volumes:
+  mongodata:
+    driver: local
